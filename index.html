@@ -57,7 +57,8 @@
         }
         input[type="radio"] {
             margin-right: 10px;
-            pointer-events: none;
+            /* Pastikan radio button tidak bisa diklik langsung, hanya melalui label */
+            pointer-events: none; 
         }
         
         /* Gaya untuk feedback */
@@ -74,6 +75,8 @@
         }
         .options label.disabled {
             cursor: default;
+            /* Matikan efek hover setelah memilih jawaban */
+            pointer-events: none; 
         }
 
         button {
@@ -137,12 +140,11 @@
             font-weight: bold;
             color: #6c757d;
         }
-
-        /* --- Perubahan CSS untuk Skor Besar --- */
+        /* CSS untuk Skor Besar */
         #final-score-display {
-            font-size: 3.5em; /* Ukuran teks sangat besar */
+            font-size: 3.5em; 
             font-weight: bold;
-            color: #28a745; /* Warna hijau untuk skor */
+            color: #28a745; 
             display: block;
             margin: 10px 0 20px 0;
             text-align: center;
@@ -151,7 +153,6 @@
             border-radius: 10px;
             background-color: #f0fff0;
         }
-        /* --- Akhir Perubahan CSS --- */
     </style>
 </head>
 <body>
@@ -255,6 +256,7 @@
         let optionsHtml = '';
         q.a.forEach((option, optionIndex) => {
             const optionChar = String.fromCharCode(65 + optionIndex); // A, B, C, D
+            // Menggunakan fungsi checkAnswer pada label yang diklik
             optionsHtml += `
                 <label for="q_opt_${optionIndex}" onclick="checkAnswer(${index}, ${optionIndex}, this)">
                     <input type="radio" name="current_q" id="q_opt_${optionIndex}" value="${optionIndex}">
@@ -274,15 +276,22 @@
         
         document.getElementById('progress-bar').textContent = `Soal ${questionNumber} dari ${questions.length}`;
 
+        // Sembunyikan tombol Lanjut/Selesai saat soal baru dimuat
         document.getElementById('next-button').style.display = 'none';
         document.getElementById('submit-button').style.display = 'none';
     }
 
     function checkAnswer(qIndex, selectedIndex, selectedLabel) {
-        // Nonaktifkan semua label untuk mencegah perubahan jawaban
+        // Hanya proses jika jawaban belum dipilih untuk soal ini (mencegah klik ganda)
+        if (userAnswers[qIndex] !== null) {
+            return; 
+        }
+
+        // Nonaktifkan semua label agar tidak bisa memilih opsi lain
         document.querySelectorAll('#question-area label').forEach(label => {
             label.classList.add('disabled');
-            label.onclick = null;
+            // Menghapus onclick untuk menonaktifkan klik lebih lanjut
+            label.onclick = null; 
         });
 
         userAnswers[qIndex] = selectedIndex;
@@ -297,7 +306,8 @@
             selectedLabel.classList.add('incorrect-feedback');
             
             // Tandai jawaban yang benar dengan warna hijau
-            const correctLabel = document.querySelector(`#question-area label:nth-child(${correctAnswerIndex + 1})`);
+            // Selector ini mencari label ke-(correctAnswerIndex + 1) di dalam options
+            const correctLabel = document.querySelector(`#question-area .options label:nth-child(${correctAnswerIndex + 1})`);
             if (correctLabel) {
                 correctLabel.classList.add('correct-feedback');
             }
@@ -311,8 +321,13 @@
         }
     }
 
+    function nextQuestion() {
+        currentQuestionIndex++;
+        displayQuestion(currentQuestionIndex);
+    }
+
     function submitQuiz() {
-        let correctCount = 0; // Menghitung jumlah jawaban benar
+        let correctCount = 0; 
         const resultDetails = document.getElementById('result-details');
         resultDetails.innerHTML = '';
 
@@ -344,11 +359,10 @@
             `;
         });
 
-        // --- PERUBAHAN LOGIKA SKOR ---
+        // Hitung skor: Jumlah Benar * 5
         const finalScore = correctCount * 5; 
         document.getElementById('score-display').textContent = finalScore;
         document.getElementById('correct-count').textContent = correctCount;
-        // --- AKHIR PERUBAHAN LOGIKA SKOR ---
 
         document.getElementById('quiz-page').style.display = 'none';
         document.getElementById('result-page').style.display = 'block';
