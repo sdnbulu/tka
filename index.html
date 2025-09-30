@@ -26,9 +26,9 @@
         }
         /* Judul Utama */
         h1 {
-            color: #dc3545; /* Ganti warna agar lebih menonjol */
+            color: #dc3545;
             font-size: 2em;
-            margin-bottom: 20px; /* Tambahkan margin agar tidak terlalu dekat dengan login */
+            margin-bottom: 20px;
         }
         
         #login-page, #quiz-page, #result-page {
@@ -62,13 +62,13 @@
         
         /* Gaya untuk feedback */
         .options label.correct-feedback {
-            background-color: #d4edda; /* Hijau muda */
+            background-color: #d4edda;
             border-color: #28a745;
             color: #155724;
             font-weight: bold;
         }
         .options label.incorrect-feedback {
-            background-color: #f8d7da; /* Merah muda */
+            background-color: #f8d7da;
             border-color: #dc3545;
             color: #721c24;
         }
@@ -126,11 +126,9 @@
             color: #28a745;
         }
         #login-page, #quiz-page, #result-page {
-            /* Semua halaman disembunyikan secara default */
             display: none;
         }
         #login-page {
-            /* Hanya halaman login yang ditampilkan saat awal */
             display: block;
         }
         #progress-bar {
@@ -139,6 +137,21 @@
             font-weight: bold;
             color: #6c757d;
         }
+
+        /* --- Perubahan CSS untuk Skor Besar --- */
+        #final-score-display {
+            font-size: 3.5em; /* Ukuran teks sangat besar */
+            font-weight: bold;
+            color: #28a745; /* Warna hijau untuk skor */
+            display: block;
+            margin: 10px 0 20px 0;
+            text-align: center;
+            border: 3px solid #d4edda;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: #f0fff0;
+        }
+        /* --- Akhir Perubahan CSS --- */
     </style>
 </head>
 <body>
@@ -169,7 +182,12 @@
         <h2>Hasil Tes</h2>
         <p>Nama: <span id="res-name"></span></p>
         <p>Asal Sekolah: <span id="res-school"></span></p>
-        <p>Skor Anda: <span id="score-display"></span> dari 20</p>
+
+        <div id="final-score-display">
+            <span id="score-display"></span>
+        </div>
+        
+        <p style="text-align: center; font-weight: bold;">(Jumlah Jawaban Benar: <span id="correct-count"></span> dari 20)</p>
         
         <h3>Kunci Jawaban dan Pembahasan</h3>
         <div id="result-details">
@@ -293,13 +311,8 @@
         }
     }
 
-    function nextQuestion() {
-        currentQuestionIndex++;
-        displayQuestion(currentQuestionIndex);
-    }
-
     function submitQuiz() {
-        let score = 0;
+        let correctCount = 0; // Menghitung jumlah jawaban benar
         const resultDetails = document.getElementById('result-details');
         resultDetails.innerHTML = '';
 
@@ -308,7 +321,7 @@
             const isCorrect = userAnswerIndex === q.correct;
             
             if (isCorrect) {
-                score++;
+                correctCount++;
             }
 
             const correctAnswerText = q.a[q.correct].replace(/\*\*/g, '');
@@ -331,7 +344,12 @@
             `;
         });
 
-        document.getElementById('score-display').textContent = score;
+        // --- PERUBAHAN LOGIKA SKOR ---
+        const finalScore = correctCount * 5; 
+        document.getElementById('score-display').textContent = finalScore;
+        document.getElementById('correct-count').textContent = correctCount;
+        // --- AKHIR PERUBAHAN LOGIKA SKOR ---
+
         document.getElementById('quiz-page').style.display = 'none';
         document.getElementById('result-page').style.display = 'block';
     }
