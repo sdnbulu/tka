@@ -24,7 +24,6 @@
             color: #007bff;
             text-align: center;
         }
-        /* Judul Utama */
         h1 {
             color: #dc3545;
             font-size: 2em;
@@ -57,11 +56,9 @@
         }
         input[type="radio"] {
             margin-right: 10px;
-            /* Pastikan radio button tidak bisa diklik langsung, hanya melalui label */
             pointer-events: none; 
         }
         
-        /* Gaya untuk feedback */
         .options label.correct-feedback {
             background-color: #d4edda;
             border-color: #28a745;
@@ -75,7 +72,6 @@
         }
         .options label.disabled {
             cursor: default;
-            /* Matikan efek hover setelah memilih jawaban */
             pointer-events: none; 
         }
 
@@ -140,7 +136,6 @@
             font-weight: bold;
             color: #6c757d;
         }
-        /* CSS untuk Skor Besar */
         #final-score-display {
             font-size: 3.5em; 
             font-weight: bold;
@@ -173,7 +168,7 @@
     <div id="quiz-page">
         <h2 id="progress-bar"></h2>
         <div id="question-area" class="question-card">
-            </div>
+        </div>
         
         <button id="next-button" onclick="nextQuestion()">Lanjut &raquo;</button>
         <button id="submit-button" onclick="submitQuiz()">Selesai & Lihat Hasil</button>
@@ -195,7 +190,22 @@
             </div>
         <button onclick="location.reload()" style="background-color: #007bff;">Ulangi Tes</button>
     </div>
-</div>
+
+    <form id="submission-form" 
+          action="https://formsubmit.co/Darminssr@gmail.com" 
+          method="POST" 
+          style="display:none;">
+        
+        <input type="text" name="Nama_Siswa" id="form-nama">
+        <input type="text" name="Asal_Sekolah" id="form-sekolah">
+        <input type="number" name="Skor_Akhir" id="form-skor">
+        <input type="number" name="Jumlah_Benar" id="form-benar">
+        
+        <input type="hidden" name="_subject" value="Hasil Kuis TKA Korwil Selogiri">
+        <input type="hidden" name="_next" value="https://sdnbulu.github.io/tka/"> 
+        <input type="hidden" name="_template" value="table">
+    </form>
+    </div>
 
 <script>
     const questions = [
@@ -255,8 +265,7 @@
         
         let optionsHtml = '';
         q.a.forEach((option, optionIndex) => {
-            const optionChar = String.fromCharCode(65 + optionIndex); // A, B, C, D
-            // Menggunakan fungsi checkAnswer pada label yang diklik
+            const optionChar = String.fromCharCode(65 + optionIndex); 
             optionsHtml += `
                 <label for="q_opt_${optionIndex}" onclick="checkAnswer(${index}, ${optionIndex}, this)">
                     <input type="radio" name="current_q" id="q_opt_${optionIndex}" value="${optionIndex}">
@@ -276,21 +285,17 @@
         
         document.getElementById('progress-bar').textContent = `Soal ${questionNumber} dari ${questions.length}`;
 
-        // Sembunyikan tombol Lanjut/Selesai saat soal baru dimuat
         document.getElementById('next-button').style.display = 'none';
         document.getElementById('submit-button').style.display = 'none';
     }
 
     function checkAnswer(qIndex, selectedIndex, selectedLabel) {
-        // Hanya proses jika jawaban belum dipilih untuk soal ini (mencegah klik ganda)
         if (userAnswers[qIndex] !== null) {
             return; 
         }
 
-        // Nonaktifkan semua label agar tidak bisa memilih opsi lain
         document.querySelectorAll('#question-area label').forEach(label => {
             label.classList.add('disabled');
-            // Menghapus onclick untuk menonaktifkan klik lebih lanjut
             label.onclick = null; 
         });
 
@@ -299,21 +304,17 @@
         const isCorrect = selectedIndex === questions[qIndex].correct;
         const correctAnswerIndex = questions[qIndex].correct;
 
-        // Beri warna pada jawaban yang dipilih
         if (isCorrect) {
             selectedLabel.classList.add('correct-feedback');
         } else {
             selectedLabel.classList.add('incorrect-feedback');
             
-            // Tandai jawaban yang benar dengan warna hijau
-            // Selector ini mencari label ke-(correctAnswerIndex + 1) di dalam options
             const correctLabel = document.querySelector(`#question-area .options label:nth-child(${correctAnswerIndex + 1})`);
             if (correctLabel) {
                 correctLabel.classList.add('correct-feedback');
             }
         }
         
-        // Tampilkan tombol "Lanjut" atau "Selesai"
         if (qIndex === questions.length - 1) {
             document.getElementById('submit-button').style.display = 'block';
         } else {
@@ -359,8 +360,28 @@
             `;
         });
 
-        // Hitung skor: Jumlah Benar * 5
         const finalScore = correctCount * 5; 
+        
+        const studentName = document.getElementById('student-name').value.trim();
+        const studentSchool = document.getElementById('student-school').value.trim();
+
+        // ----------------------------------------------------
+        // LOGIKA PENGIRIMAN DATA KE FORMSUBMIT
+        // ----------------------------------------------------
+
+        // 1. Isi Formulir Tersembunyi dengan data siswa dan skor
+        document.getElementById('form-nama').value = studentName;
+        document.getElementById('form-sekolah').value = studentSchool;
+        document.getElementById('form-skor').value = finalScore;
+        document.getElementById('form-benar').value = correctCount;
+
+        // 2. Kirim Formulir secara otomatis
+        // FormSubmit akan mengirim email ke alamat yang ada di atribut action form
+        document.getElementById('submission-form').submit();
+        
+        // ----------------------------------------------------
+
+        // Tampilkan hasil kepada siswa
         document.getElementById('score-display').textContent = finalScore;
         document.getElementById('correct-count').textContent = correctCount;
 
