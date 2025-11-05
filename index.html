@@ -8,13 +8,13 @@
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
-            padding: 0; 
+            padding: 0;
             color: #333;
             background-image: url('1759273432364.jpg');
-            background-size: cover; 
-            background-position: center; 
-            background-repeat: no-repeat; 
-            background-attachment: fixed; 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
         }
         body::before {
             content: "";
@@ -28,7 +28,7 @@
         }
         .container {
             max-width: 600px;
-            margin: 50px auto; 
+            margin: 50px auto;
             background-color: rgba(255, 255, 255, 0.98);
             padding: 30px;
             border-radius: 10px;
@@ -70,9 +70,10 @@
         }
         input[type="radio"] {
             margin-right: 10px;
-            pointer-events: none; 
+            pointer-events: none;
         }
         
+        /* GAYA LAMA UNTUK FEEDBACK (KITA BIARKAN SAJA) */
         .options label.correct-feedback {
             background-color: #d4edda;
             border-color: #28a745;
@@ -86,8 +87,16 @@
         }
         .options label.disabled {
             cursor: default;
-            pointer-events: none; 
+            pointer-events: none;
         }
+
+        /* [BARU] GAYA UNTUK JAWABAN YANG DIPILIH SISWA */
+        .options label.selected {
+            background-color: #dbeaff; /* Biru muda */
+            border-color: #007bff;
+            font-weight: bold;
+        }
+
 
         button {
             display: block;
@@ -151,9 +160,9 @@
             color: #6c757d;
         }
         #final-score-display {
-            font-size: 3.5em; 
+            font-size: 3.5em;
             font-weight: bold;
-            color: #28a745; 
+            color: #28a745;
             display: block;
             margin: 10px 0 20px 0;
             text-align: center;
@@ -224,17 +233,17 @@
         { q: "<p style='text-align: justify; font-style: italic;'>Untuk membuat agar-agar, langkah pertama adalah mencampurkan bubuk agar-agar dengan gula dan air dalam sebuah panci. Setelah itu, aduk rata lalu masak di atas kompor dengan api sedang sambil terus diaduk hingga mendidih. Jika sudah mendidih, matikan api dan diamkan sejenak untuk mengurangi uap panas. Terakhir, tuang adonan ke dalam cetakan dan biarkan hingga dingin dan mengeras.</p>7. Ringkasan yang paling sesuai untuk teks prosedur di atas adalah...", a: ["Cara menuang agar-agar ke dalam cetakan yang benar.", "**Langkah-langkah memasak agar-agar mulai dari mencampur bahan, memasak, hingga mencetaknya.**", "Pentingnya mengaduk agar-agar saat dimasak agar tidak menggumpal.", "Bahan-bahan yang diperlukan untuk membuat agar-agar."], correct: 1 },
         { q: "<p style='text-align: justify; font-style: italic;'>Untuk membuat agar-agar, langkah pertama adalah mencampurkan bubuk agar-agar dengan gula dan air dalam sebuah panci. Setelah itu, aduk rata lalu masak di atas kompor dengan api sedang sambil terus diaduk hingga mendidih. Jika sudah mendidih, matikan api dan diamkan sejenak untuk mengurangi uap panas. Terakhir, tuang adonan ke dalam cetakan dan biarkan hingga dingin dan mengeras.</p>8. Setelah adonan agar-agar mendidih, langkah selanjutnya menurut teks adalah...", a: ["Langsung menuangnya ke cetakan", "Memasaknya lebih lama", "Menambahkan gula", "**Mematikan api dan mendiamkannya sejenak**"], correct: 3 },
         { q: "<p style='text-align: justify; font-style: italic;'>Untuk membuat agar-agar, langkah pertama adalah mencampurkan bubuk agar-agar dengan gula dan air dalam sebuah panci. Setelah itu, aduk rata lalu masak di atas kompor dengan api sedang sambil terus diaduk hingga mendidih. Jika sudah mendidih, matikan api dan diamkan sejenak untuk mengurangi uap panas. Terakhir, tuang adonan ke dalam cetakan dan biarkan hingga dingin dan mengeras.</p>9. Jika langkah-langkah pada teks diberi nomor: (1) Campurkan bahan, (2) Masak hingga mendidih, (3) Matikan api dan diamkan, (4) Tuang ke cetakan. Urutan bagan alur yang benar adalah...", a: ["**(1) -> (2) -> (3) -> (4)**", "(2) -> (1) -> (4) -> (3)", "(1) -> (3) -> (2) -> (4)", "(2) -> (4) -> (1) -> (3)"], correct: 0 },
-        { q: "<p style='text-align: justify; font-style: italic;'>Rantai makanan di sawah dimulai dari padi yang berperan sebagai produsen. Padi dimakan oleh tikus, yang merupakan konsumen tingkat I. Selanjutnya, tikus dimakan oleh ular, yang berperan sebagai konsumen tingkat II. Terakhir, ular dimakan oleh elang, yang menjadi konsumen tingkat III atau konsumen puncak.</p>10. Ide pokok teks di atas adalah...", a: ["**Kehidupan elang di sawah**", "Peran padi sebagai produsen", "Contoh rantai makanan di ekosistem sawah", "Bahaya tikus bagi tanaman padi"], correct: 0 },
+        { q: "<p style='text-align: justify; font-style: italic;'>Rantai makanan di sawah dimulai dari padi yang berperan sebagai produsen. Padi dimakan oleh tikus, yang merupakan konsumen tingkat I. Selanjutnya, tikus dimakan oleh ular, yang berperan sebagai konsumen tingkat II. Terakhir, ular dimakan oleh elang, yang menjadi konsumen tingkat III atau konsumen puncak.</p>10. Ide pokok teks di atas adalah...", a: ["Kehidupan elang di sawah", "Peran padi sebagai produsen", "**Contoh rantai makanan di ekosistem sawah**", "Bahaya tikus bagi tanaman padi"], correct: 2 },
         { q: "<p style='text-align: justify; font-style: italic;'>Rantai makanan di sawah dimulai dari padi yang berperan sebagai produsen. Padi dimakan oleh tikus, yang merupakan konsumen tingkat I. Selanjutnya, tikus dimakan oleh ular, yang berperan sebagai konsumen tingkat II. Terakhir, ular dimakan oleh elang, yang menjadi konsumen tingkat III atau konsumen puncak.</p>11. Bentuk bagan alur rantai makanan yang sesuai dengan informasi pada teks adalah...", a: ["**Padi -> Tikus -> Ular -> Elang**", "Elang -> Ular -> Tikus -> Padi", "Padi -> Ular -> Tikus -> Elang", "Tikus -> Padi -> Elang -> Ular"], correct: 0 },
         { q: "<p style='text-align: justify; font-style: italic;'>Rantai makanan di sawah dimulai dari padi yang berperan sebagai produsen. Padi dimakan oleh tikus, yang merupakan konsumen tingkat I. Selanjutnya, tikus dimakan oleh ular, yang berperan sebagai konsumen tingkat II. Terakhir, ular dimakan oleh elang, yang menjadi konsumen tingkat III atau konsumen puncak.</p>12. Berdasarkan teks, yang berperan sebagai konsumen tingkat II adalah...", a: ["Padi", "Tikus", "**Ular**", "Elang"], correct: 2 },
         { q: "<p style='text-align: justify; font-style: italic;'>Gunung berapi memiliki beberapa bagian utama. Bagian paling bawah adalah dapur magma, tempat magma panas terkumpul. Ketika terjadi erupsi, magma akan naik melalui sebuah saluran yang disebut pipa kepundan. Puncak gunung tempat magma keluar disebut kawah. Material yang dikeluarkan saat erupsi bisa berupa lava (magma yang mengalir), awan panas, dan abu vulkanik.</p>13. Ringkasan yang paling tepat tentang proses keluarnya magma sesuai teks adalah...", a: ["Magma dari dapur magma langsung keluar melalui kawah tanpa melewati saluran apapun.", "**Magma dari dapur magma naik melalui pipa kepundan lalu keluar melalui kawah saat erupsi.**", "Lava dan awan panas berkumpul di dapur magma sebelum akhirnya meletus.", "Pipa kepundan adalah tempat magma dimasak hingga panas lalu dikeluarkan melalui kawah."], correct: 1 },
         { q: "<p style='text-align: justify; font-style: italic;'>Gunung berapi memiliki beberapa bagian utama. Bagian paling bawah adalah dapur magma, tempat magma panas terkumpul. Ketika terjadi erupsi, magma akan naik melalui sebuah saluran yang disebut pipa kepundan. Puncak gunung tempat magma keluar disebut kawah. Material yang dikeluarkan saat erupsi bisa berupa lava (magma yang mengalir), awan panas, dan abu vulkanik.</p>14. Berdasarkan bagan struktur gunung berapi dalam teks, bagian yang berfungsi sebagai saluran naiknya magma adalah...", a: ["Lava", "Abu vulkanik", "**Pipa kepundan**", "Dapur magma"], correct: 2 },
         { q: "<p style='text-align: justify; font-style: italic;'>Gunung berapi memiliki beberapa bagian utama. Bagian paling bawah adalah dapur magma, tempat magma panas terkumpul. Ketika terjadi erupsi, magma akan naik melalui sebuah saluran yang disebut pipa kepundan. Puncak gunung tempat magma keluar disebut kawah. Material yang dikeluarkan saat erupsi bisa berupa lava (magma yang mengalir), awan panas, dan abu vulkanik.</p>15. Material yang dikeluarkan saat gunung berapi erupsi, kecuali...", a: ["Lava", "**Air**", "Awan panas", "Abu vulkanik"], correct: 1 },
-        { q: "<p style='text-align: justify; font-style: italic;'>Indonesia dikenal sebagai negara maritim karena wilayah perairannya lebih luas daripada daratannya. Posisi ini memberikan dua keuntungan utama. Secara ekonomi, laut Indonesia menjadi jalur perdagangan internasional yang strategis dan memiliki kekayaan hasil laut yang melimpah seperti ikan dan terumbu karang. Secara sosial budaya, laut menghubungkan berbagai suku bangsa di ribuan pulau, sehingga tercipta keragaman budaya yang unik.</p>16. Ikhtisar yang paling tepat untuk paragraf di atas adalah...", a: ["Indonesia memiliki laut yang sangat luas.", "Posisi maritim Indonesia memberikan keuntungan ekonomi dari sisi perdagangan dan hasil laut, serta keuntungan sosial budaya dalam bentuk keragaman.", "Laut Indonesia menjadi jalur perdagangan internasional yang sangat ramai.", "**Keragaman budaya di Indonesia tercipta karena adanya laut.**"], correct: 3 },
+        { q: "<p style='text-align: justify; font-style: italic;'>Indonesia dikenal sebagai negara maritim karena wilayah perairannya lebih luas daripada daratannya. Posisi ini memberikan dua keuntungan utama. Secara ekonomi, laut Indonesia menjadi jalur perdagangan internasional yang strategis dan memiliki kekayaan hasil laut yang melimpah seperti ikan dan terumbu karang. Secara sosial budaya, laut menghubungkan berbagai suku bangsa di ribuan pulau, sehingga tercipta keragaman budaya yang unik.</p>16. Ikhtisar yang paling tepat untuk paragraf di atas adalah...", a: ["Indonesia memiliki laut yang sangat luas.", "**Posisi maritim Indonesia memberikan keuntungan ekonomi dari sisi perdagangan dan hasil laut, serta keuntungan sosial budaya dalam bentuk keragaman.**", "Laut Indonesia menjadi jalur perdagangan internasional yang sangat ramai.", "Keragaman budaya di Indonesia tercipta karena adanya laut."], correct: 1 },
         { q: "<p style='text-align: justify; font-style: italic;'>Indonesia dikenal sebagai negara maritim karena wilayah perairannya lebih luas daripada daratannya. Posisi ini memberikan dua keuntungan utama. Secara ekonomi, laut Indonesia menjadi jalur perdagangan internasional yang strategis dan memiliki kekayaan hasil laut yang melimpah seperti ikan dan terumbu karang. Secara sosial budaya, laut menghubungkan berbagai suku bangsa di ribuan pulau, sehingga tercipta keragaman budaya yang unik.</p>17. Berdasarkan bagan informasi pada teks, yang termasuk keuntungan posisi maritim Indonesia di bidang ekonomi adalah...", a: ["Jalur perdagangan dan keragaman budaya", "Kekayaan hasil laut dan menghubungkan antarsuku", "**Jalur perdagangan internasional dan kekayaan hasil laut**", "Keragaman budaya dan persatuan suku bangsa"], correct: 2 },
         { q: "<p style='text-align: justify; font-style: italic;'>Indonesia dikenal sebagai negara maritim karena wilayah perairannya lebih luas daripada daratannya. Posisi ini memberikan dua keuntungan utama. Secara ekonomi, laut Indonesia menjadi jalur perdagangan internasional yang strategis dan memiliki kekayaan hasil laut yang melimpah seperti ikan dan terumbu karang. Secara sosial budaya, laut menghubungkan berbagai suku bangsa di ribuan pulau, sehingga tercipta keragaman budaya yang unik.</p>18. Alasan utama Indonesia disebut sebagai negara maritim menurut teks adalah...", a: ["karena memiliki banyak gunung berapi", "karena memiliki hasil laut yang sangat melimpah", "**karena wilayah perairannya lebih luas daripada daratannya**", "karena menjadi jalur perdagangan internasional"], correct: 2 },
         { q: "<p style='text-align: justify; font-style: italic;'>Manfaat menabung ada banyak. Pertama, menabung melatih kita untuk hidup hemat dan tidak boros. Kedua, dengan memiliki tabungan, kita mempunyai dana darurat yang bisa digunakan untuk keperluan mendadak. Ketiga, menabung membantu kita untuk bisa membeli barang yang kita inginkan di masa depan tanpa harus berutang.</p>19. Berikut ini adalah rangkuman manfaat menabung yang disebutkan dalam teks, kecuali...", a: ["Melatih untuk hidup hemat", "Memiliki dana untuk keperluan darurat", "Membantu membeli barang yang diinginkan", "**Mendapatkan bunga yang besar dari bank**"], correct: 3 },
-        { q: "<p style='text-align: justify; font-style: italic;'>Manfaat menabung ada banyak. Pertama, menabung melatih kita untuk hidup hemat dan tidak boros. Kedua, dengan memiliki tabungan, kita mempunyai dana darurat yang bisa digunakan untuk keperluan mendadak. Ketiga, menabung membantu kita untuk bisa membeli barang yang kita inginkan di masa depan tanpa harus berutang.</p>20. Kalimat yang paling tepat untuk dijadikan ikhtisar dari teks tersebut adalah...", a: ["Manfaat utama menabung adalah agar kita bisa membeli barang yang kita inginkan.", "Menabung adalah satu-satunya cara untuk melatih hidup hemat.", "Menurut teks, menabung bermanfaat untuk melatih hemat, menyediakan dana darurat, dan membantu meraih keinginan.", "**Semua orang harus menabung agar memiliki dana darurat saat diperlukan.**"], correct: 3 }
+        { q: "<p style='text-align: justify; font-style: italic;'>Manfaat menabung ada banyak. Pertama, menabung melatih kita untuk hidup hemat dan tidak boros. Kedua, dengan memiliki tabungan, kita mempunyai dana darurat yang bisa digunakan untuk keperluan mendadak. Ketiga, menabung membantu kita untuk bisa membeli barang yang kita inginkan di masa depan tanpa harus berutang.</p>20. Kalimat yang paling tepat untuk dijadikan ikhtisar dari teks tersebut adalah...", a: ["Manfaat utama menabung adalah agar kita bisa membeli barang yang kita inginkan.", "Menabung adalah satu-satunya cara untuk melatih hidup hemat.", "**Menurut teks, menabung bermanfaat untuk melatih hemat, menyediakan dana darurat, dan membantu meraih keinginan.**", "Semua orang harus menabung agar memiliki dana darurat saat diperlukan."], correct: 2 }
     ];
 
     let currentQuestionIndex = 0;
@@ -262,10 +271,12 @@
         document.getElementById('login-page').style.display = 'none';
         document.getElementById('quiz-page').style.display = 'block';
         
-        currentQuestionIndex = 0; 
+        currentQuestionIndex = 0;
         displayQuestion(currentQuestionIndex);
     }
 
+    
+    // [FUNGSI DIMODIFIKASI]
     function displayQuestion(index) {
         if (index >= questions.length) {
             submitQuiz();
@@ -276,11 +287,16 @@
         const questionArea = document.getElementById('question-area');
         const questionNumber = index + 1;
         
+        const currentAnswer = userAnswers[index]; // Ambil jawaban yang tersimpan
+        
         let optionsHtml = '';
         q.a.forEach((option, optionIndex) => {
-            const optionChar = String.fromCharCode(65 + optionIndex); 
+            const optionChar = String.fromCharCode(65 + optionIndex);
+            // [MODIFIKASI] Tambahkan kelas 'selected' jika opsi ini adalah jawaban yang tersimpan
+            const selectedClass = (currentAnswer === optionIndex) ? 'selected' : ''; 
+            
             optionsHtml += `
-                <label for="q_opt_${optionIndex}" onclick="checkAnswer(${index}, ${optionIndex}, this)">
+                <label for="q_opt_${optionIndex}" class="${selectedClass}" onclick="checkAnswer(${index}, ${optionIndex}, this)">
                     <input type="radio" name="current_q" id="q_opt_${optionIndex}" value="${optionIndex}">
                     ${optionChar}. ${option.replace(/\*\*/g, '')}
                 </label>
@@ -298,36 +314,38 @@
         
         document.getElementById('progress-bar').textContent = `Soal ${questionNumber} dari ${questions.length}`;
 
-        document.getElementById('next-button').style.display = 'none';
-        document.getElementById('submit-button').style.display = 'none';
+        // [MODIFIKASI] Logika untuk menampilkan tombol Lanjut/Selesai
+        // Jika soal ini sudah pernah dijawab, tampilkan tombolnya
+        if (userAnswers[index] !== null) {
+            if (index === questions.length - 1) {
+                document.getElementById('submit-button').style.display = 'block';
+                document.getElementById('next-button').style.display = 'none';
+            } else {
+                document.getElementById('next-button').style.display = 'block';
+                document.getElementById('submit-button').style.display = 'none';
+            }
+        } else {
+            // Jika soal baru, sembunyikan kedua tombol
+            document.getElementById('next-button').style.display = 'none';
+            document.getElementById('submit-button').style.display = 'none';
+        }
     }
 
+    // [FUNGSI DIMODIFIKASI TOTAL]
     function checkAnswer(qIndex, selectedIndex, selectedLabel) {
-        if (userAnswers[qIndex] !== null) {
-            return; 
-        }
-
-        document.querySelectorAll('#question-area label').forEach(label => {
-            label.classList.add('disabled');
-            label.onclick = null; 
-        });
-
+        // 1. Simpan jawaban siswa
         userAnswers[qIndex] = selectedIndex;
 
-        const isCorrect = selectedIndex === questions[qIndex].correct;
-        const correctAnswerIndex = questions[qIndex].correct;
-
-        if (isCorrect) {
-            selectedLabel.classList.add('correct-feedback');
-        } else {
-            selectedLabel.classList.add('incorrect-feedback');
-            
-            const correctLabel = document.querySelector(`#question-area .options label:nth-child(${correctAnswerIndex + 1})`);
-            if (correctLabel) {
-                correctLabel.classList.add('correct-feedback');
-            }
-        }
+        // 2. Hapus tanda 'selected' dari semua opsi di soal ini
+        document.querySelectorAll(`#question-area .options label`).forEach(label => {
+            label.classList.remove('selected');
+        });
         
+        // 3. Tambahkan tanda 'selected' hanya ke opsi yang diklik
+        selectedLabel.classList.add('selected');
+        
+        // 4. Tampilkan tombol "Lanjut" atau "Selesai"
+        // (Kita tidak lagi memberi feedback benar/salah di sini)
         if (qIndex === questions.length - 1) {
             document.getElementById('submit-button').style.display = 'block';
         } else {
@@ -335,13 +353,14 @@
         }
     }
 
+
     function nextQuestion() {
         currentQuestionIndex++;
         displayQuestion(currentQuestionIndex);
     }
 
     function submitQuiz() {
-        let correctCount = 0; 
+        let correctCount = 0;
         const resultDetails = document.getElementById('result-details');
         resultDetails.innerHTML = '';
 
@@ -354,7 +373,6 @@
                 correctCount++;
             }
 
-            // [MODIFIKASI] Membuat teks jawaban yang benar beserta opsinya (A, B, C, D)
             const correctAnswerChar = String.fromCharCode(65 + correctAnswerIndex);
             const correctAnswerText = `${correctAnswerChar}. ${q.a[correctAnswerIndex].replace(/\*\*/g, '')}`;
             
@@ -362,14 +380,12 @@
             
             let userResponseText;
             if (userAnswerIndex !== null && userAnswerIndex >= 0) {
-                 // [MODIFIKASI] Membuat teks jawaban pengguna beserta opsinya (A, B, C, D)
                  const userAnswerChar = String.fromCharCode(65 + userAnswerIndex);
                  userResponseText = `${userAnswerChar}. ${q.a[userAnswerIndex].replace(/\*\*/g, '')}`;
             } else {
                  userResponseText = 'Tidak Dijawab';
             }
 
-            // [MODIFIKASI] Memasukkan variabel baru ke dalam HTML hasil
             resultDetails.innerHTML += `
                 <div class="result-item ${resultClass}">
                     <p><strong>${index + 1}. ${q.q.replace(/<p.*?>.*?<\/p>/, '')}</strong></p>
@@ -379,7 +395,7 @@
             `;
         });
 
-        const finalScore = correctCount * 5; 
+        const finalScore = correctCount * 5;
         
         const studentName = document.getElementById('student-name').value.trim();
         const studentSchool = document.getElementById('student-school').value.trim();
@@ -388,20 +404,17 @@
         // BAGIAN INI TELAH DIMODIFIKASI UNTUK GOOGLE SHEETS
         // ===================================================================
 
-        // 1. Isi formulir tersembunyi dengan data siswa dan skor
         document.getElementById('form-nama').value = studentName;
         document.getElementById('form-sekolah').value = studentSchool;
         document.getElementById('form-skor').value = finalScore;
         document.getElementById('form-benar').value = correctCount;
         
-        // 2. Kirim data menggunakan Fetch API ke Google Script
         fetch(scriptURL, { method: 'POST', body: new FormData(form)})
             .then(response => console.log('Success!', response))
             .catch(error => console.error('Error!', error.message));
         
         // ===================================================================
 
-        // Tampilkan hasil kepada siswa (ini tidak berubah)
         document.getElementById('score-display').textContent = finalScore;
         document.getElementById('correct-count').textContent = correctCount;
 
